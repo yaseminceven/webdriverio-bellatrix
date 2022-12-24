@@ -1,5 +1,6 @@
 const LoginPage = require('../pageobjects/login.page');
-const FormPage = require('../pageobjects/form.page')
+const FormPage = require('../pageobjects/form.page');
+const MainPage = require('../pageobjects/main.page');
 
 describe('My Login application', () => {
     it.skip('should login with invalid credentials', async () => {
@@ -10,7 +11,7 @@ describe('My Login application', () => {
             'Error');
     });
 
-    it('submit contact form', async () => {
+    it.skip('submit contact form', async () => {
         await FormPage.open();
         await FormPage.enterFirstName();
         await FormPage.enterLastName();
@@ -19,6 +20,13 @@ describe('My Login application', () => {
         await FormPage.enterComment();
         await browser.pause(5000);
         await FormPage.clickCaptchaAndSubmit();
+    })
+
+    it('add product to cart at homepage', async () => {
+        await MainPage.open();
+        await MainPage.selectSortingOption('Sort by popularity');
+        await MainPage.clickAddToCart(0);
+        await expect(MainPage.cartItemsText).toHaveTextContaining('1');
     })
 });
 

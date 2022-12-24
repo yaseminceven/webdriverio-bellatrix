@@ -1,4 +1,5 @@
 const Page = require('./page');
+const ExpectedConditions = require('wdio-wait-for');
 const fakeData = require("../../utils/random-data");
 
 class FormPage extends Page {
@@ -23,7 +24,7 @@ class FormPage extends Page {
     }
 
     get boxReCAPTCHA () {
-        return $('#recaptcha-anchor');
+        return $('.recaptcha-checkbox-border');
     }
 
     get buttonSubmit () {
@@ -31,7 +32,7 @@ class FormPage extends Page {
     }
 
     get iframe () {
-        return $('.g-recaptcha iframe[title="reCAPTCHA"]');
+        return $('iframe[title="reCAPTCHA"]');
     } 
 
     async enterFirstName(){
@@ -64,7 +65,9 @@ class FormPage extends Page {
     }
 
     async clickCaptchaAndSubmit(){
-        await browser.switchToFrame(this.iframe);
+        await this.iframe.waitForExist();  
+        const id = this.iframe.getValue();
+        await browser.switchToFrame(1);
         await this.boxReCAPTCHA.click();
         await browser.switchToParentFrame();
         await this.buttonSubmit.click();

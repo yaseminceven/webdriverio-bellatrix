@@ -8,8 +8,9 @@
         "@wdio/mocha-framework": "^7.26.0",
         "@wdio/spec-reporter": "^7.26.0",
         "chromedriver": "^107.0.3",
+        "faker": "^5.5.3",
         "wdio-chromedriver-service": "^8.0.0",
-        "faker": "^5.5.3"
+        "wdio-wait-for": "^3.0.1"
     },
     "scripts": {
         "test": "wdio wdio.conf.js",
