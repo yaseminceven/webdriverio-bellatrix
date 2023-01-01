@@ -65,9 +65,7 @@ class FormPage extends Page {
     }
 
     async clickCaptchaAndSubmit(){
-        await this.iframe.waitForExist();  
-        const id = this.iframe.getValue();
-        await browser.switchToFrame(1);
+        await browser.switchToFrame($('//div[@class=\'g-recaptcha\']//iframe[@title=\'reCAPTCHA\']'));
         await this.boxReCAPTCHA.click();
         await browser.switchToParentFrame();
         await this.buttonSubmit.click();

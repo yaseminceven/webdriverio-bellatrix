@@ -9,8 +9,8 @@ class MainPage extends Page {
         return $('.cart-contents .count');
     }
 
-    get addToCartButtons () {
-        return $("//a[text()='Add to cart']");
+    addToCartButton (productIndex) {
+        return $('.products.columns-4').$$('li')[`${productIndex}`].$('a[href*=add-to-cart]');
     }
 
     async selectSortingOption (text) {
@@ -19,9 +19,7 @@ class MainPage extends Page {
     }
 
     async clickAddToCart (productIndex) {
-        await this.addToCartButtons.waitForDisplayed();
-        let addToCartElements = this.addToCartButtons;
-        await addToCartElements[productIndex].click(); 
+        await this.addToCartButton(productIndex).click();
     }
 
     open () {
