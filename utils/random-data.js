@@ -1,4 +1,4 @@
-var faker = require("faker");
+const faker = require('faker');
 
 function fakeFirstName() {
     return faker.name.firstName();

@@ -3,6 +3,7 @@ const ExpectedConditions = require('wdio-wait-for');
 const fakeData = require("../../utils/random-data");
 
 class FormPage extends Page {
+
     get inputFirstName () {
         return $('#wpforms-3347-field_1');
     }
@@ -24,7 +25,7 @@ class FormPage extends Page {
     }
 
     get boxReCAPTCHA () {
-        return $('.recaptcha-checkbox-border');
+        return $('.rc-anchor-checkbox');
     }
 
     get buttonSubmit () {
@@ -32,7 +33,7 @@ class FormPage extends Page {
     }
 
     get iframe () {
-        return $('iframe[title="reCAPTCHA"]');
+        return $('iframe[src*="&size=normal"]');
     } 
 
     async enterFirstName(){
@@ -64,9 +65,17 @@ class FormPage extends Page {
         await this.inputTextArea.keys(fakeData.fakeText());
     }
 
-    async clickCaptchaAndSubmit(){
-        await browser.switchToFrame($('//div[@class=\'g-recaptcha\']//iframe[@title=\'reCAPTCHA\']'));
+    async switchToRecaptchaFrame() {
+        await browser.switchToFrame(await this.iframe);
+    }
+
+    //click on the reCAPTCHA checkbox with wait
+    async clickCaptcha(){
+        await this.boxReCAPTCHA.waitForClickable();   
         await this.boxReCAPTCHA.click();
+    }
+
+    async switchToMainPageAndSubmit() {
         await browser.switchToParentFrame();
         await this.buttonSubmit.click();
     }
