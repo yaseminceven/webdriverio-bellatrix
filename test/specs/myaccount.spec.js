@@ -8,7 +8,7 @@ describe('Login cases from my account page', async () => {
         await LoginPage.login();
         await expect(LoginPage.errorMessage).toBeExisting();
         await expect(LoginPage.errorMessage).toHaveTextContaining(
-            'You have exceeded maximum login retries');
+            ['You have exceeded maximum login retries','is not registered on this site']);
     });
 
     it('lost your password button should open reset password page', async () => {
