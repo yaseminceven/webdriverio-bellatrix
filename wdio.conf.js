@@ -21,7 +21,11 @@ exports.config = {
     // will be called from there.
     //
     specs: [
-        './test/specs/**/*.js'
+        [
+            "./test/specs/contactform.spec.js",
+            "./test/specs/homepage.spec.js",
+            "./test/specs/myaccount.spec.js"
+        ],
     ],
     // Patterns to exclude.
     exclude: [
@@ -72,7 +76,7 @@ exports.config = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'info',
+    logLevel: 'error',
     //
     // Set specific log levels per logger
     // loggers:

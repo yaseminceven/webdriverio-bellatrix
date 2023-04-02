@@ -19,10 +19,18 @@ class LoginPage extends Page {
         return $('ul[role="alert"]');
     }
 
+    get forgotPassword() {
+        return $('//a[contains(., "Lost your password")]');
+    }
+
     async login () {
         await this.inputUsername.setValue(fakeData.fakeFirstName());
         await this.inputPassword.setValue(fakeData.fakePassword());
         await this.btnSubmit.click();
+    }
+
+    async clickForgotPassword() {
+        await this.forgotPassword.click();
     }
 
     open () {
