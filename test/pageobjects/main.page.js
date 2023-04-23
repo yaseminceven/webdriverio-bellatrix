@@ -26,8 +26,8 @@ class MainPage extends Page {
         return $$("span > ins:nth-child(2) > span:nth-child(1) > bdi");
     } 
 
-    tab (tabName) {
-        $('.menu').$(`a*=${tabName}`);
+    tab (tabName) { 
+        return $(".menu li").$("//a[contains(.,'"+`${tabName}`+"')]");
     }
 
     async selectSortingOption (text) {

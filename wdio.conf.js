@@ -24,7 +24,8 @@ exports.config = {
         [
             "./test/specs/contactform.spec.js",
             "./test/specs/homepage.spec.js",
-            "./test/specs/myaccount.spec.js"
+            "./test/specs/myaccount.spec.js",
+            "./test/specs/blogpage.spec.js"
         ],
     ],
     // Patterns to exclude.
