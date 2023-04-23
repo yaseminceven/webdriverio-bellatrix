@@ -1,6 +1,5 @@
 const MainPage = require('../pageobjects/main.page');
 
-
 describe('Homepage test cases', async () => {
 
     it('add product to cart at homepage', async () => {

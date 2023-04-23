@@ -26,6 +26,10 @@ class MainPage extends Page {
         return $$("span > ins:nth-child(2) > span:nth-child(1) > bdi");
     } 
 
+    tab (tabName) {
+        $('.menu').$(`a*=${tabName}`);
+    }
+
     async selectSortingOption (text) {
         await this.dropdown.waitForDisplayed();
         await this.dropdown.selectByVisibleText(text);
@@ -71,6 +75,10 @@ class MainPage extends Page {
         const newValidPriceValues = newPriceValues.filter(price => price !== null);  
         const sortedValues = newValidPriceValues.slice().sort(function(a, b){return b - a});
         assert.deepEqual(sortedValues,newPriceValues);
+    }
+
+    async clickTab (buttonName) {
+        await this.tab(buttonName).click();
     }
 
     open () {
