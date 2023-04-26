@@ -23,6 +23,10 @@ class BlogPage extends Page {
         return $('#submit');
     }
 
+    get postDate () {
+        return $('#main .posted-on');
+    }
+
     async clickLeaveComment () {
         await this.leaveCommentLink.click();
     }
@@ -40,6 +44,10 @@ class BlogPage extends Page {
     async clickSubmitButton () {
         await this.submitButton.waitForDisplayed();
         await this.submitButton.click();
+    }
+
+    async getBlogDateText () {
+        return await this.postDate.getText();
     }
 
     open(){

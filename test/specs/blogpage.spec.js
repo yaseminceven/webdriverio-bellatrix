@@ -22,4 +22,9 @@ describe('Blog page test cases',  async () => {
         await expect(browser).toHaveUrlContaining("#comment");
     })
 
+    it('check blog post date exists', async () => {
+        await BlogPage.open();
+        await expect(await BlogPage.getBlogDateText()).toContain('Posted on');
+    })
+
 });
