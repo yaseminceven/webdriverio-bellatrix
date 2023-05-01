@@ -14,8 +14,16 @@ class MainPage extends Page {
         return $("a[aria-label*='Read more']");
     }
 
+    get viewCartButton () {
+        return $("a[title='View cart']");
+    } 
+
     productList (productIndex) {
         return $('.products.columns-4').$$('li')[`${productIndex}`].$("a[class*='product__link']");
+    }
+
+    productTitle (productIndex) {
+        return $('li:nth-child('+`${productIndex}`+') .woocommerce-loop-product__title');
     }
 
     addToCartButton (productIndex) {
@@ -79,6 +87,16 @@ class MainPage extends Page {
 
     async clickTab (buttonName) {
         await this.tab(buttonName).click();
+    }
+
+    async getProductTitle (productIndx) {
+        await this.productTitle(productIndx+1).waitForDisplayed();
+        return this.productTitle(productIndx+1).getText();
+    }
+
+    async clickViewCart () {
+        await this.viewCartButton.waitForDisplayed();
+        await this.viewCartButton.click();
     }
 
     open () {
