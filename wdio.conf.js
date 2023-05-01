@@ -22,10 +22,10 @@ exports.config = {
     //
     specs: [
         [
-/*             "./test/specs/contactform.spec.js",
+            "./test/specs/contactform.spec.js",
             "./test/specs/homepage.spec.js",
             "./test/specs/myaccount.spec.js",
-            "./test/specs/blogpage.spec.js", */
+            "./test/specs/blogpage.spec.js",
             "./test/specs/cartpage.spec.js"
         ],
     ],
@@ -63,9 +63,9 @@ exports.config = {
         maxInstances: 5,
         browserName: 'chrome',
         acceptInsecureCerts: true,
-/*         'goog:chromeOptions': {
+        'goog:chromeOptions': {
             args: ['--headless', '--disable-gpu','--disable-dev-shm-usage','--remote-debugging-port=9222']
-        } */
+        }
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
