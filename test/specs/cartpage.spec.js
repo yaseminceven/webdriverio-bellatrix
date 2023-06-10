@@ -24,4 +24,10 @@ describe('Cart page test cases',  async () => {
         const productTitleCartPage = await CartPage.productTitle.getText();
         assert.equal(productTitleCartPage,productTitle);
     })
+
+    it('check return the shop button functionality', async () => {
+        await CartPage.open();
+        await CartPage.returnShop();
+        await expect(browser).toHaveUrl("demos.bellatrix.solutions");
+    })
 });

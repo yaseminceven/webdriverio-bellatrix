@@ -13,9 +13,18 @@ class CartPage extends Page {
         return $('.remove');
     }
 
+    get returnShopButton () {
+        return $('.button.wc-backward');
+    }
+
     async removeItem () {
         await this.removeButton.waitForDisplayed();
         await this.removeButton.click();
+    }
+
+    async returnShop () {
+        await this.returnShopButton.waitForDisplayed();
+        await this.returnShopButton.click();
     }
 
     open () {
