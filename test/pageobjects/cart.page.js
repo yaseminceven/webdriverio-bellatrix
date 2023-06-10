@@ -17,6 +17,10 @@ class CartPage extends Page {
         return $('.button.wc-backward');
     }
 
+    get proceedCheckoutButton () {
+        return $('.checkout-button.button.alt.wc-forward');
+    }
+
     async removeItem () {
         await this.removeButton.waitForDisplayed();
         await this.removeButton.click();
@@ -25,6 +29,11 @@ class CartPage extends Page {
     async returnShop () {
         await this.returnShopButton.waitForDisplayed();
         await this.returnShopButton.click();
+    }
+
+    async proceedCheckout () {
+        await this.proceedCheckoutButton.waitForDisplayed();
+        await this.proceedCheckoutButton.click();
     }
 
     open () {

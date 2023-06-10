@@ -16,6 +16,12 @@ describe('Cart page test cases',  async () => {
         await expect(CartPage.emptyCartText).toBeDisplayed();
     })
 
+    it('check return the shop button functionality', async () => {
+        await CartPage.open();
+        await CartPage.returnShop();
+        await expect(browser).toHaveUrl("https://demos.bellatrix.solutions/");
+    })
+
     it('check added product at cart page', async () => {
         await MainPage.open();
         const productTitle = await MainPage.getProductTitle(0);
@@ -25,9 +31,9 @@ describe('Cart page test cases',  async () => {
         assert.equal(productTitleCartPage,productTitle);
     })
 
-    it('check return the shop button functionality', async () => {
+    it('check proceed to checkout button functionality', async () => {
         await CartPage.open();
-        await CartPage.returnShop();
-        await expect(browser).toHaveUrl("demos.bellatrix.solutions");
+        await CartPage.proceedCheckout();
+        await expect(browser).toHaveUrl("https://demos.bellatrix.solutions/checkout/");
     })
 });
